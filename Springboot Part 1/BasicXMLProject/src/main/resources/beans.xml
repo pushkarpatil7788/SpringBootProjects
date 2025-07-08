@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+           http://www.springframework.org/schema/beans 
+           http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="emp" class="com.infosys.beans.Employee">
+        <property name="empName" value="PushkarPatil"/>
+        <property name="empId" value="1"/>
+    </bean>
+
+    <bean id="emp1" class="com.infosys.beans.Employee">
+        <property name="empName" value="Aayush"/>
+        <property name="empId" value="2"/>
+    </bean>
+
+    <bean id="depart1" class="com.infosys.beans.Department">
+        <constructor-arg name="deptName" value="edgeverve" />
+        <constructor-arg name="deptId" value="1" type="int" />
+    </bean>
+
+    <bean id="project1" class="com.infosys.beans.Project">
+        <constructor-arg>
+            <list>
+                <ref bean="emp"/>
+                <ref bean="emp1"/>
+            </list>
+        </constructor-arg>
+        <constructor-arg>
+            <ref bean="emp" />
+        </constructor-arg>
+
+        <property name="projectName" value="Finacle"/>
+        <property name="department" ref="depart1"/>
+
+        <property name="resources">
+            <map>
+                <entry key="Laptop" value="5"/>
+                <entry key="Server" value="2"/>
+                <entry key="Monitor" value="10"/>
+            </map>
+        </property>
+    </bean>
+
+</beans>
